@@ -34,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration ---
     const SECTION_KEYS = ["1-1", "1-2", "1-3", "1-4", "1-5", "2-1", "2-2", "3-1", "3-2"];
 
+    // Static (hardcoded) PDFs that always show regardless of DB
+    const STATIC_PDFS = {
+        "1-4": [
+            { name: "วิจัยในชั้นเรียน.pdf", url: "assets/pdfs/วิจัยในชั้นเรียน.pdf" }
+        ]
+    };
+
     // State
     let sectionData = {};
     let imageData = {};
@@ -187,16 +194,31 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!list) return;
 
         list.innerHTML = "";
-        const files = sectionData[key] || [];
 
+        // แสดง static PDFs ก่อนเสมอ (ไม่มีปุ่มลบ)
+        const staticFiles = STATIC_PDFS[key] || [];
+        staticFiles.forEach((file) => {
+            const li = document.createElement("li");
+            li.className = "pdf-item";
+            li.innerHTML = `
+                <a href="${file.url}" target="_blank" class="pdf-info"
+                    style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; width: 100%;">
+                    <i class="fa-solid fa-file-pdf" style="color: #f0ff22; font-size: 1.2rem;"></i>
+                    <span>${file.name}</span>
+                </a>
+            `;
+            list.appendChild(li);
+        });
+
+        // ตามด้วยไฟล์ที่ upload จาก IndexedDB
+        const files = sectionData[key] || [];
         files.forEach((file, index) => {
             const li = document.createElement("li");
             li.className = "pdf-item";
 
-            // Use ID if available, else index (for legacy/default) - though now everything has ID from DB
             const deleteAttr = file.id
                 ? `onclick="event.stopPropagation(); deletePdf('${key}', ${file.id})"`
-                : `style="display:none"`; // Hide delete for static/default if any
+                : `style="display:none"`;
 
             li.innerHTML = `
                 <div class="pdf-info" onclick="openPdfModal('${file.url}')">
