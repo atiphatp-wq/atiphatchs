@@ -32,12 +32,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.querySelector(".lightbox-next");
 
     // --- Configuration ---
-    const SECTION_KEYS = ["1-1", "1-2", "1-3", "1-4", "1-5", "2-1", "2-2", "3-1", "3-2"];
+    const SECTION_KEYS = ["1-1", "1-2", "1-3", "1-4", "1-5", "2-1", "2-2", "3-1", "3-2", "3-3"];
 
     // Static (hardcoded) PDFs that always show regardless of DB
     const STATIC_PDFS = {
         "1-4": [
             { name: "วิจัยในชั้นเรียน.pdf", url: "assets/pdfs/วิจัยในชั้นเรียน.pdf" }
+        ],
+        "1-5": [
+            { name: "ผลงานนักเรียน.pdf", url: "assets/pdfs/ผลงานนักเรียน.pdf" }
+        ],
+        "2-1": [
+            { name: "ครูประจำชั้น.pdf", url: "assets/pdfs/ครูประจำชั้น.pdf" }
+        ],
+        "3-2": [
+            { name: "จิตอาสา.pdf", url: "assets/pdfs/จิตอาสา.pdf" }
+        ],
+        "3-3": [
+            { name: "พัฒนา.pdf", url: "assets/pdfs/พัฒนา.pdf" }
         ]
     };
 
