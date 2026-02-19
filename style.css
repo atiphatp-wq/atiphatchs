@@ -138,6 +138,8 @@ a {
     font-weight: 600;
     margin-bottom: 0.5rem;
     display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .hero-text h1 {
@@ -165,6 +167,12 @@ a {
     padding: 1.5rem;
     margin-bottom: 2rem;
     backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.personal-info-card:hover {
+    transform: scale(1.02);
 }
 
 .personal-info-card h3 {
@@ -304,19 +312,100 @@ a {
     border-color: var(--primary-color);
 }
 
-/* Responsive */
+/* Responsive Layout Updates */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 5%;
+    }
+
+    .hero-split {
+        gap: 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .glass-nav {
+        padding: 1rem 5%;
+    }
+
     .nav-links {
         display: none;
-        /* Logic to toggle will be in JS */
     }
 
     .menu-toggle {
         display: block;
     }
 
-    .hero-content h1 {
+    .hero-split {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-text h1 {
         font-size: 2.5rem;
+    }
+
+    .sub-headline {
+        font-size: 1.4rem;
+    }
+
+    .hero-profile-img {
+        width: 280px;
+        height: 280px;
+    }
+
+    .image-glow {
+        width: 300px;
+        height: 300px;
+    }
+
+    .floating-badge {
+        width: 60px;
+        height: 60px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .personal-info-card {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-profile-img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .image-glow {
+        width: 240px;
+        height: 240px;
+    }
+
+    .cta-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-button {
+        margin: 0;
+        width: 100%;
     }
 }
 
@@ -327,6 +416,14 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .container {
@@ -1031,8 +1128,7 @@ iframe {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* OR cover */
-    background: black;
+    background: transparent;
 }
 
 .lightbox-close {

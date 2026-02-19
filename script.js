@@ -386,8 +386,13 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselEl.innerHTML = ""; // Clear old
 
         // 1. Calculate Geometry
-        const width = 600; // Match CSS base width
-        const gap = 30;    // Spacing
+        const screenWidth = window.innerWidth;
+        const width = screenWidth < 768 ? screenWidth * 0.85 : 600; // Responsive width
+        const height = width * 0.67; // Maintain aspect ratio
+        const gap = screenWidth < 768 ? 15 : 30;
+
+        carouselScene.style.width = `${width}px`;
+        carouselScene.style.height = `${height}px`;
 
         if (currentImageCount === 1) {
             carouselRadius = 0;
@@ -396,13 +401,15 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselTheta = 360 / currentImageCount;
             const perimeter = (width + gap) * currentImageCount;
             carouselRadius = Math.round((perimeter / 2) / Math.PI);
-            carouselRadius = Math.max(carouselRadius, 250);
+            carouselRadius = Math.max(carouselRadius, screenWidth < 768 ? 180 : 250);
         }
 
         // 2. Build Items
         imgs.forEach((img, i) => {
             const item = document.createElement('div');
             item.className = 'carousel-item-3d';
+            item.style.width = `${width}px`;
+            item.style.height = `${height}px`;
             item.innerHTML = `<img src="${img.url}">`;
 
             // Layout in Circle
@@ -506,6 +513,23 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === "ArrowRight") rotateNext();
             if (e.key === "ArrowLeft") rotatePrev();
         }
+    });
+
+    // --- Intersection Observer for Animations ---
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
     });
 
     // Init
