@@ -208,12 +208,12 @@ a {
 }
 
 .hero-profile-img {
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid var(--glass-border);
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+    border: 5px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 50px rgba(0, 242, 255, 0.3);
     position: relative;
     z-index: 2;
     animation: float 6s ease-in-out infinite;
@@ -221,8 +221,8 @@ a {
 
 .image-glow {
     position: absolute;
-    width: 420px;
-    height: 420px;
+    width: 480px;
+    height: 480px;
     border-radius: 50%;
     background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
     opacity: 0.4;
@@ -249,9 +249,11 @@ a {
 /* Floating Badges */
 .floating-badge {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--glass-border);
     filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
     animation: floatBadge 4s ease-in-out infinite;
     z-index: 3;
@@ -320,6 +322,12 @@ a {
 
     .hero-split {
         gap: 2rem;
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
     }
 
     .hero-text h1 {
@@ -341,9 +349,7 @@ a {
     }
 
     .hero-split {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 2rem;
+        gap: 3rem;
     }
 
     .hero-text {
@@ -359,13 +365,13 @@ a {
     }
 
     .hero-profile-img {
-        width: 280px;
-        height: 280px;
+        width: 320px;
+        height: 320px;
     }
 
     .image-glow {
-        width: 300px;
-        height: 300px;
+        width: 340px;
+        height: 340px;
     }
 
     .floating-badge {
@@ -388,13 +394,13 @@ a {
     }
 
     .hero-profile-img {
-        width: 220px;
-        height: 220px;
+        width: 250px;
+        height: 250px;
     }
 
     .image-glow {
-        width: 240px;
-        height: 240px;
+        width: 270px;
+        height: 270px;
     }
 
     .cta-group {
@@ -595,24 +601,25 @@ textarea:focus {
 
 /* --- Topic Grid (Vertical Stack Redesign) --- */
 .topic-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     gap: 30px;
     padding: 1rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .topic-card {
+    height: 100%;
     padding: 30px;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 1px solid var(--glass-border);
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 25px;
+    gap: 20px;
     text-align: left;
     position: relative;
     overflow: hidden;
@@ -644,19 +651,18 @@ textarea:focus {
 }
 
 .topic-icon {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--secondary-color);
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    min-width: 80px;
-    height: 80px;
+    min-width: 70px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid var(--glass-border);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     margin-bottom: 0;
-    /* Override old margin */
 }
 
 /* Content Container within Card */
@@ -684,6 +690,10 @@ textarea:focus {
 
 /* Responsive: Mobile Stack */
 @media (max-width: 768px) {
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
     .topic-card {
         flex-direction: column;
         align-items: center;
@@ -692,7 +702,6 @@ textarea:focus {
 
     .topic-card:hover {
         transform: translateY(-5px);
-        /* Lift up on mobile instead of slide */
     }
 
     .topic-card::before {
