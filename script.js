@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "2-1": [
             { name: "ครูประจำชั้น.pdf", url: "assets/pdfs/ครูประจำชั้น.pdf" }
         ],
+        "2-2": [
+            { name: "ประชุมผู้ปกครอง.pdf", url: "assets/pdfs/ประชุมผู้ปกครอง.pdf" }
+        ],
         "3-2": [
             { name: "จิตอาสา.pdf", url: "assets/pdfs/จิตอาสา.pdf" }
         ],
