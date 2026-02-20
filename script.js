@@ -56,6 +56,68 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
+    const STATIC_IMAGES = {
+        "1-5": [
+            { name: "IMG_0424.jpg", url: "assets/images/1.5/IMG_0424.jpg" },
+            { name: "IMG_0456.jpg", url: "assets/images/1.5/IMG_0456.jpg" },
+            { name: "IMG_0461.jpg", url: "assets/images/1.5/IMG_0461.jpg" },
+            { name: "IMG_3407.jpg", url: "assets/images/1.5/IMG_3407.jpg" },
+            { name: "IMG_3692.jpg", url: "assets/images/1.5/IMG_3692.jpg" },
+            { name: "IMG_3696.jpg", url: "assets/images/1.5/IMG_3696.jpg" },
+            { name: "IMG_3700.jpg", url: "assets/images/1.5/IMG_3700.jpg" },
+            { name: "IMG_3705.jpg", url: "assets/images/1.5/IMG_3705.jpg" },
+            { name: "IMG_3714.jpg", url: "assets/images/1.5/IMG_3714.jpg" },
+            { name: "IMG_3716.jpg", url: "assets/images/1.5/IMG_3716.jpg" },
+            { name: "IMG_3729.jpg", url: "assets/images/1.5/IMG_3729.jpg" },
+            { name: "IMG_3731.jpg", url: "assets/images/1.5/IMG_3731.jpg" }
+        ],
+        "2-1": [
+            { name: "IMG_2592 - Copy - Copy - Copy.jpg", url: "assets/images/2.1/IMG_2592 - Copy - Copy - Copy.jpg" },
+            { name: "IMG_2602 - Copy.jpg", url: "assets/images/2.1/IMG_2602 - Copy.jpg" },
+            { name: "IMG_2687 - Copy.jpg", url: "assets/images/2.1/IMG_2687 - Copy.jpg" },
+            { name: "IMG_2698.jpg", url: "assets/images/2.1/IMG_2698.jpg" },
+            { name: "IMG_2771.jpg", url: "assets/images/2.1/IMG_2771.jpg" },
+            { name: "IMG_2911.jpg", url: "assets/images/2.1/IMG_2911.jpg" },
+            { name: "IMG_2912.jpg", url: "assets/images/2.1/IMG_2912.jpg" },
+            { name: "IMG_3182.jpg", url: "assets/images/2.1/IMG_3182.jpg" },
+            { name: "IMG_3183.jpg", url: "assets/images/2.1/IMG_3183.jpg" },
+            { name: "IMG_3184.jpg", url: "assets/images/2.1/IMG_3184.jpg" },
+            { name: "IMG_3575.jpg", url: "assets/images/2.1/IMG_3575.jpg" },
+            { name: "IMG_3580.jpg", url: "assets/images/2.1/IMG_3580.jpg" },
+            { name: "IMG_3584.jpg", url: "assets/images/2.1/IMG_3584.jpg" }
+        ],
+        "3-2": [
+            { name: "IMG_2588.jpg", url: "assets/images/3.2/IMG_2588.jpg" },
+            { name: "IMG_2603.jpg", url: "assets/images/3.2/IMG_2603.jpg" },
+            { name: "IMG_2859.jpg", url: "assets/images/3.2/IMG_2859.jpg" },
+            { name: "IMG_2862.jpg", url: "assets/images/3.2/IMG_2862.jpg" },
+            { name: "IMG_2863.jpg", url: "assets/images/3.2/IMG_2863.jpg" },
+            { name: "IMG_2868.jpg", url: "assets/images/3.2/IMG_2868.jpg" },
+            { name: "IMG_2869.jpg", url: "assets/images/3.2/IMG_2869.jpg" },
+            { name: "IMG_2877.jpg", url: "assets/images/3.2/IMG_2877.jpg" },
+            { name: "IMG_2879.jpg", url: "assets/images/3.2/IMG_2879.jpg" },
+            { name: "IMG_2880.jpg", url: "assets/images/3.2/IMG_2880.jpg" },
+            { name: "IMG_2891.JPG", url: "assets/images/3.2/IMG_2891.JPG" },
+            { name: "IMG_2892.JPG", url: "assets/images/3.2/IMG_2892.JPG" },
+            { name: "IMG_2896.jpg", url: "assets/images/3.2/IMG_2896.jpg" },
+            { name: "IMG_2899.jpg", url: "assets/images/3.2/IMG_2899.jpg" },
+            { name: "IMG_2911.jpg", url: "assets/images/3.2/IMG_2911.jpg" },
+            { name: "IMG_3743.jpg", url: "assets/images/3.2/IMG_3743.jpg" },
+            { name: "IMG_3746.jpg", url: "assets/images/3.2/IMG_3746.jpg" }
+        ],
+        "3-3": [
+            { name: "IMG_2796.JPG", url: "assets/images/3.3/IMG_2796.JPG" },
+            { name: "IMG_2840.JPG", url: "assets/images/3.3/IMG_2840.JPG" },
+            { name: "IMG_2841.JPG", url: "assets/images/3.3/IMG_2841.JPG" },
+            { name: "IMG_2842.JPG", url: "assets/images/3.3/IMG_2842.JPG" },
+            { name: "IMG_3513.jpg", url: "assets/images/3.3/IMG_3513.jpg" },
+            { name: "IMG_3515.jpg", url: "assets/images/3.3/IMG_3515.jpg" },
+            { name: "IMG_3516.jpg", url: "assets/images/3.3/IMG_3516.jpg" },
+            { name: "IMG_3521.jpg", url: "assets/images/3.3/IMG_3521.jpg" },
+            { name: "IMG_3724.jpg", url: "assets/images/3.3/IMG_3724.jpg" }
+        ]
+    };
+
     // State
     let sectionData = {};
     let imageData = {};
@@ -178,6 +240,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!imageData[item.section]) imageData[item.section] = [];
                     imageData[item.section].push(entry);
                 }
+            });
+
+            // Add Static Images
+            Object.keys(STATIC_IMAGES).forEach(key => {
+                STATIC_IMAGES[key].forEach(img => {
+                    if (!imageData[key]) imageData[key] = [];
+                    imageData[key].push({
+                        ...img,
+                        id: null, // Static files don't have DB IDs
+                        isDefault: true
+                    });
+                });
             });
 
             // Set Default if empty (only for 1-1 example logic)
