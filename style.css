@@ -1184,3 +1184,45 @@ iframe {
 .carousel-item-3d {
     -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.5));
 }
+
+/* --- Lightbox Caption --- */
+.lightbox-caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(10, 10, 20, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.2rem 1.8rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    text-align: center;
+    z-index: 2100;
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .lightbox-caption {
+        bottom: 15px;
+        font-size: 0.75rem;
+        padding: 0.8rem 1.2rem;
+        line-height: 1.5;
+    }
+}

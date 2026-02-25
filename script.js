@@ -469,6 +469,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- 3D Carousel Lightbox Logic ---
+    const SECTION_CAPTIONS = {
+        "1-5": "กิจกรรมการจัดการเรียนรู้ที่นักเรียนลงมือปฏิบัติจริงในการเขียนโปรแกรมภาษา Python และพัฒนาโครงงาน Arduino ทั้งในรูปแบบรายบุคคลและการทำงานกลุ่ม แสดงให้เห็นกระบวนการวิเคราะห์ปัญหา ออกแบบขั้นตอนวิธี และทดลองทดสอบการทำงานของโปรแกรมและอุปกรณ์ต้นแบบ ทั้งนี้สะท้อนถึงการบูรณาการความรู้ด้านการเขียนโปรแกรมและอิเล็กทรอนิกส์เพื่อพัฒนาทักษะการคิดเชิงคำนวณและการทำงานร่วมกันของผู้เรียน"
+    };
+
     window.openLightbox = function (key, selectedIndex) {
         const imgs = imageData[key];
         if (!imgs || imgs.length === 0) return;
@@ -514,7 +518,15 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselAngle = -(selectedIndex * carouselTheta);
         updateCarousel();
 
-        // 4. Show Modal & Start Animation
+        // 4. Show Caption
+        const captionEl = document.getElementById('lightboxCaption');
+        if (captionEl) {
+            const caption = SECTION_CAPTIONS[key] || '';
+            captionEl.textContent = caption;
+            captionEl.style.display = caption ? 'block' : 'none';
+        }
+
+        // 5. Show Modal & Start Animation
         lightboxModal.style.display = 'flex';
 
         // Start Auto Rotation
