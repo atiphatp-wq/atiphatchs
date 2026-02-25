@@ -86,6 +86,23 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "IMG_3580.jpg", url: "assets/images/2.1/IMG_3580.jpg" },
             { name: "IMG_3584.jpg", url: "assets/images/2.1/IMG_3584.jpg" }
         ],
+        "2-2": [
+            { name: "IMG_2860.jpg", url: "assets/images/2.2/IMG_2860.jpg" },
+            { name: "IMG_2862.jpg", url: "assets/images/2.2/IMG_2862.jpg" },
+            { name: "IMG_2864.jpg", url: "assets/images/2.2/IMG_2864.jpg" },
+            { name: "IMG_2868.jpg", url: "assets/images/2.2/IMG_2868.jpg" },
+            { name: "IMG_2869.jpg", url: "assets/images/2.2/IMG_2869.jpg" },
+            { name: "IMG_2877.jpg", url: "assets/images/2.2/IMG_2877.jpg" },
+            { name: "IMG_2878.jpg", url: "assets/images/2.2/IMG_2878.jpg" },
+            { name: "IMG_2891.JPG", url: "assets/images/2.2/IMG_2891.JPG" },
+            { name: "IMG_2892.JPG", url: "assets/images/2.2/IMG_2892.JPG" },
+            { name: "IMG_2897.jpg", url: "assets/images/2.2/IMG_2897.jpg" },
+            { name: "IMG_3576.jpg", url: "assets/images/2.2/IMG_3576.jpg" },
+            { name: "IMG_3583.jpg", url: "assets/images/2.2/IMG_3583.jpg" },
+            { name: "IMG_3743.jpg", url: "assets/images/2.2/IMG_3743.jpg" },
+            { name: "IMG_3745.jpg", url: "assets/images/2.2/IMG_3745.jpg" },
+            { name: "IMG_3746.jpg", url: "assets/images/2.2/IMG_3746.jpg" }
+        ],
         "3-2": [
             { name: "IMG_2588.jpg", url: "assets/images/3.2/IMG_2588.jpg" },
             { name: "IMG_2603.jpg", url: "assets/images/3.2/IMG_2603.jpg" },
